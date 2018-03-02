@@ -6,7 +6,7 @@
 
 | API名称 | 认证方式 | 描述 |
 | --- | --- | --- |
-| Quotes | APP | 场外期权报价接口 |
+| GetQuotes | APP | 获取A股场外期权报价 |
 
 ## API调用
 
@@ -113,11 +113,11 @@ Secret 为 APP 的密钥。
 
 
 
-## API名称：Quotes
+## API名称：GetQuotes
 
 ### *描述*
 
-场外期权报价接口
+获取A股场外期权报价
 
 ### *请求信息*
 
@@ -132,6 +132,7 @@ HTTP协议：HTTPS
 | 名称 | 位置 | 类型 | 必填 | 描述 |
 | --- | --- | --- | --- | --- |
 | collection | PATH | STRING | 是 | 报价集合，目前只开放30分钟报价集合，固定为 30min.csv |
+| headOnly | QUERY | BOOLEAN | 否 | 仅返回报价集合的最后更新时间 |
 
 ### *返回信息*
 

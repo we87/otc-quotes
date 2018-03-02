@@ -15,15 +15,21 @@ headers = {
 	'X-Ca-Request-Mode': 'debug',
 }
 
+def print_response(code, headers, response):
+	for h in headers:
+		print '%s: %s' % h
+
+	if code == 200 :
+		print response
+	else:
+		print 'StatusCode: %d' % code
+	print '\n\n'
+
+# Check last modified only
+req = request.Request(host=host, protocol=constant.HTTPS, url=url+"?headOnly=true", headers=headers, method="GET", time_out=30000)
+print_response(*cli.execute(req))
+
 # GET
 req = request.Request(host=host, protocol=constant.HTTPS, url=url, headers=headers, method="GET", time_out=30000)
 
-code, headers, response = cli.execute(req)
-
-for h in headers:
-	print '%s: %s' % h
-
-if code == 200 :
-	print response
-else:
-	print 'StatusCode: %d' % code
+print_response(*cli.execute(req))
